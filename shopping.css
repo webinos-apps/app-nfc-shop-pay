@@ -1,0 +1,644 @@
+
+
+div.disclaimer-hidden {
+    position: absolute;
+    margin:0%;
+    display: none;
+    bottom:0%;
+    right:0%;
+    width:30%;
+    border:1px;
+    font-size:80%;
+    text-align:right;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.4);
+    background-size:100% 100%;
+}
+
+div.disclaimer {
+    position: absolute;
+    margin:0%;
+    display: block;
+    bottom:0%;
+    right:0%;
+    width:30%;
+    border:1px;
+    font-size:80%;
+    text-align:right;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.4);
+    background-size:100% 100%;
+}
+
+
+div.product div.social {
+  margin-bottom: 5px;
+}
+
+a.product-control {
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+
+#shopping-enter {
+
+    background: rgba(0, 0, 0, 0.1);
+    background-size:100%;
+    background-image:url(check_out.png);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+    overflow:hidden;
+}
+
+#shopping-home {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(check_out.png);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+#shopping-beret {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(beret.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+
+#shopping-check-out {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(check_out.png);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+
+
+
+
+
+div.product.dark a {
+  color: #f08080;
+}
+
+div.product.dark a:hover {
+  color: white;
+}
+
+div.product strong {
+  font-weight: bold;
+}
+
+p.product-title {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+
+}
+
+
+div.product-title {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:240px;
+    height:100px;
+    margin:0%;
+    padding: 10px 25px 10px 10px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 200%;
+    color: rgba(0,0,0,0.8);
+    display: block;
+ }
+
+div.checkout-title {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:240px;
+    height:60px;
+    margin:0%;
+    padding: 10px 25px 10px 10px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 200%;
+    color: rgba(0,0,0,0.8);
+    display: block;
+ }
+
+
+div.shopping-total {
+    position: absolute;
+    top:60px;
+    left:12px;
+    width:240px;
+    height:100px;
+    margin:0%;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 120%;
+    color: rgba(0,0,0,0.8);
+    display: block;
+}
+
+div.shopping-total-hidden {
+    position: absolute;
+    top:60px;
+    left:12px;
+    width:240px;
+    height:100px;
+    margin:0%;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 120%;
+    color: rgba(0,0,0,0.8);
+    display: none;
+}
+
+div.shopping-basket {
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    width:240px;
+    margin:0%;
+    padding: 10px 25px 10px 10px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 100%;
+    color: rgba(0,0,0,0.8);
+    display: block;
+}
+
+div.product-description {
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    width:160px;
+    margin:0%;
+    padding: 10px 25px 10px 10px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 120%;
+    color: rgba(0,0,0,0.8);
+    display: block;
+}
+
+div.product-list {
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    width:240px;
+    margin:0%;
+    padding: 10px 25px 10px 10px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 100%;
+    color: rgba(0,0,0,0.8);
+    display: block;
+}
+
+
+div.product-added {
+    position: absolute;
+    bottom:60px;
+    right:60px;
+    height:20px;
+    width:120px;
+    margin:0%;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 100%;
+    color: rgba(0,0,0,0.0);
+    text-align:center;
+    display: block;
+}
+
+div.product-added-on {
+    position: absolute;
+    bottom:60px;
+    right:60px;
+    height:20px;
+    width:120px;
+    margin:0%;
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 1.0);
+    border: 0px solid #555;
+    font-size: 100%;
+    text-align:center;
+    display: block;
+}
+
+
+
+div.product-price {
+    position: absolute;
+    bottom:90px;
+    right:30px;
+    width:210px;
+    height:40px;
+    margin:0%;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    color: red;
+    display: block;
+    font-size: 200%;
+    font-weight: bold;
+    text-indent: 0.5em;
+    text-align: right;
+}
+
+div.product-menu {
+    position: absolute;
+    bottom:0px;
+    right:0px;
+    width:180px;
+    height:60px;
+    margin:0px;
+    padding:0px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 20px;
+    color: white;
+    display: block;
+    text-align: right;
+}
+
+div.home-menu {
+    position: absolute;
+    top:0px;
+    right:0px;
+    width:60px;
+    height:60px;
+    margin:0px;
+    padding: 0px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 20px;
+    color: white;
+    display: block;
+    text-align: right;
+}
+
+div.checkout-menu {
+    position: absolute;
+    bottom:0px;
+    right:0px;
+    width:120px;
+    height:60px;
+    margin:0px;
+    padding: 0px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 0px solid #555;
+    font-size: 20px;
+    color: white;
+    display: block;
+    text-align: right;
+}
+
+
+button.shopping_cart {
+    position:absolute;
+    display: block;
+    top:0%;
+    left:66.666%;
+    height:100%;
+    width:33.333%;
+    border:0px;
+    background-image: url('cart_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.shopping_cart:hover {
+    background-image: url('cart_down.png');
+}
+
+button.add_product {
+    position:absolute;
+    display: block;
+    top:0%;
+    left:0%;
+    height:100%;
+    width:33.33%;
+    border:0px;
+    background-image: url('add_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+
+}
+
+button.add_product:hover {
+    background-image: url('add_down.png');
+}
+
+button.remove_product {
+    position:absolute;
+    display: block;
+    top:0%;
+    left:33.333%;
+    height:100%;
+    width:33.333%;
+    border:0px;
+    background-image: url('remove_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.remove_product:hover {
+    background-image: url('remove_down.png');
+}
+
+button.empty_cart {
+    position:absolute;
+    top:0%;
+    left:0%;
+    display: block;
+    height:100%;
+    width:50%;
+    border:0px;
+    background-image: url('empty_cart_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.empty_cart:hover {
+    background-image: url('empty_cart_down.png');
+}
+
+button.empty_cart_hidden {
+    position:absolute;
+    top:0%;
+    left:0%;
+    display: none;
+    height:100%;
+    width:50%;
+    border:0px;
+    background-image: url('empty_cart_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+
+button.home {
+    position:absolute;
+    display: block;
+    top:0%;
+    right:0%;
+    height:100%;
+    width:100%;
+    border:0px;
+    background-image: url('home_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.home-hidden {
+    position:absolute;
+    display: none;
+    top:0%;
+    right:0%;
+    height:100%;
+    width:100%;
+    border:0px;
+    background-image: url('home_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.home:hover {
+    background-image: url('home_down.png');
+}
+
+button.check_out {
+    position:absolute;
+    display: block;
+    top:0%;
+    left:50%;
+    height:100%;
+    width:50%;
+    border:0px;
+    background-image: url('check_out_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.check_out_hidden {
+    position:absolute;
+    display: none;
+    top:0%;
+    left:50%;
+    height:100%;
+    width:50%;
+    border:0px;
+    background-image: url('check_out_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+}
+
+button.check_out:hover {
+    background-image: url('check_out_down.png');
+}
+
+
+button.enter_shopping {
+    position:absolute;
+    display: block;
+    top:30px;
+    right:30px;
+    height:60%;
+    width:120px;
+    border:0px;
+    background-image: url('enter_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+
+}
+
+button.enter_shopping:hover {
+    background-image: url('enter_down.png');
+}
+
+
+button.restart_shopping {
+    position:absolute;
+    display: block;
+    top:80px;
+    right:90px;
+    height:55%;
+    width:110px;
+    border:0px;
+    background-image: url('restart_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+
+}
+
+button.restart_shopping_hidden {
+    position:absolute;
+    display: none;
+    top:80px;
+    right:90px;
+    height:55%;
+    width:110px;
+    border:0px;
+    background-image: url('restart_up.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+
+}
+
+button.restart_shopping:hover {
+    background-image: url('restart_down.png');
+}
+
+
+
+
+
+
+
+
+#shopping-mug {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(mug1.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+#shopping-t-shirt {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(t-shirt-man.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+#shopping-scarf {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(scarf.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+#shopping-infospark-touch {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(infospark-touch.png);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+#shopping-infospark-lite {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(infospark-lite.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+#shopping-infospark-s {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(infospark-s1.png);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+
+#shopping-xperia-active {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(xperia-active.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+
+#shopping-xperia-arc {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(xperia-arc.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}
+
+
+#shopping-xperia-pro {
+
+    background: rgba(0, 0, 0, 0.0);
+    background-size:100%;
+    background-image:url(xperia-pro.jpg);
+    background-repeat: no-repeat;
+    top:-50%;
+    left:-50%;
+    margin:50%;
+    border-radius:0%;
+}

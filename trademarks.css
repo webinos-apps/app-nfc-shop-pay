@@ -1,0 +1,45 @@
+
+div.t {
+    position:absolute;
+    display: block;
+    bottom:0px;
+    right:150px;
+    height:60px;
+    width:150px;
+    border:0px;
+    background-image: url('t-systems.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+    color: rgba(0, 0, 0, 0.0);
+}
+
+div.a {
+    position:absolute;
+    display: block;
+    bottom:0px;
+    right:0px;
+    height:60px;
+    width:150px;
+    border:0px;
+    background-image: url('AmbieSense.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+    color: rgba(0, 0, 0, 0.0);
+}
+
+div.w {
+    position:absolute;
+    display: block;
+    bottom:100px;
+    left:0px;
+    height:60px;
+    width:150px;
+    border:0px;
+    background-image: url('webinos-logo-white.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    background-size:100% 100%;
+    color: rgba(0, 0, 0, 0.0);
+}

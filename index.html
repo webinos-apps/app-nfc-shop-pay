@@ -1,0 +1,110 @@
+﻿<html>
+<head><style type="text/css"></style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="author" content="Hans Myrhaug">
+<meta name="description" content="Shopping and mobile wallet">
+
+<title>Shopping with mobile wallet Demo</title>
+
+
+<link rel="stylesheet" href="styles.css"     type="text/css" />
+<link rel="stylesheet" href="shopping.css"   type="text/css" />
+<link rel="stylesheet" href="trademarks.css" type="text/css" />
+<link rel="stylesheet" href="3d-watch.css"   type="text/css" />
+
+
+
+<script type="text/javascript" src="qrcode-generator.js"></script>
+<script type="text/javascript" src="update-qrcode.js"></script>
+<script type="text/javascript" src="shop.js"></script>
+<script type="text/javascript" src="watermark.js"></script>
+
+
+
+<script src="modernizr-1.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="minimal.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="vector.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="clock.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body 
+data-rendering="true" 
+id="shopping-enter">
+
+<div class="product-title">Mobile Shopping and Wallet Demo</div>
+<div class="product-description">New shopping experience with webinos and NFC.</div>
+
+ <div id="clock" class="clock-container partially-supported">
+
+    <div class="clock-wrapper">
+
+        <div class="clock" name="watermark" >
+
+
+            <div class="facets">
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+               <div class="facet"></div>
+            </div>
+
+            <div class="pin"></div>
+
+            <div class="hands">
+                <div class="hour-wrapper"> 
+                   <div class="hour"></div>
+                </div>
+
+                <div class="minute-wrapper"> 
+                    <div class="minute"></div>
+                </div>
+                <div class="second-wrapper">    
+<img src="test1.jpg" width="200" height="200" name="watermark" />                                           <div class="second" id="qr"></div>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+<div class="w"></div>
+<div class="a" ></div>
+
+
+<button class="enter_shopping" onclick="openPage('index3.html');"></button>
+
+
+<script>
+	var load = false;
+	window.onload = function(){
+                update_qrcode();
+		if(!load) {
+			wmark.init({
+				/* config goes here */
+				"position": "top-right", // default "bottom-right"
+				"opacity": 50, // default 50
+				"class": "watermark", // default "watermark"
+				"path": "watermark.png"
+			});
+			
+			load = true;
+		}
+	}
+</script>
+
+
+</body></html>
