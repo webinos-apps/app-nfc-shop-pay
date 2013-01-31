@@ -1,7 +1,7 @@
 /* shop.js */
 
 var shop = {
-  items: [],
+  purchases: [],
 
   on_start: function ()
   {
@@ -35,7 +35,7 @@ var shop = {
     var basket = this.get_cookie("basket");
 
     if (basket)
-      this.items = JSON.parse(basket);
+      this.purchases = JSON.parse(basket);
 
     this.show_basket();
   },
@@ -50,9 +50,9 @@ var shop = {
     var basket = this.element("basket");
     var content = "", i, item, total = 0;
 
-    for (i = 0; i < this.items.length; ++i)
+    for (i = 0; i < this.purchases.length; ++i)
     {
-      item = this.items[i];
+      item = this.purchases[i];
       content += item.name + " &mdash; " + item.price + "€<br />\n";
       total += item.price;
     }
@@ -67,18 +67,18 @@ var shop = {
 
   get_item: function (name)
   {
-    for (i = 0; i < this.items.length; ++i)
+    for (i = 0; i < this.purchases.length; ++i)
     {
-      item = this.items[i];
+      item = this.purchases[i];
 
       if (item.name == name)
         return item;
     }
 
     return null;
-    for (i = 0; i < this.items.length; ++i)
+    for (i = 0; i < this.purchases.length; ++i)
     {
-      item = this.items[i];
+      item = this.purchases[i];
 
       if (item.name == name)
         return item;
@@ -97,8 +97,8 @@ var shop = {
 
     if (!item)
     {
-      this.items[this.items.length] = { "name" : this.name, "price" : this.price};
-      this.set_cookie("basket", JSON.stringify(this.items), 5);
+      this.purchases[this.purchases.length] = { "name" : this.name, "price" : this.price};
+      this.set_cookie("basket", JSON.stringify(this.purchases), 5);
       this.show_basket();
     }
 
@@ -113,14 +113,14 @@ var shop = {
 
     var i;
 
-    for (var i = j = 0; i < this.items.length; ++i)
+    for (var i = j = 0; i < this.purchases.length; ++i)
     {
-      item = this.items[i];
+      item = this.purchases[i];
 
       if (item.name == this.name)
       {
-        this.items.splice(i, 1);
-        this.set_cookie("basket", JSON.stringify(this.items), 5);
+        this.purchases.splice(i, 1);
+        this.set_cookie("basket", JSON.stringify(this.purchases), 5);
         this.show_basket();
         break;
       }
@@ -131,7 +131,7 @@ var shop = {
   on_clear: function ()
   {
     this.index = 0;
-    this.items = [];
+    this.purchases = [];
     this.delete_cookie("basket");
     this.show_basket();
   },
@@ -145,9 +145,9 @@ var shop = {
   {
     var total = 0, i, item;
 
-    for (i = 0; i < this.items.length; ++i)
+    for (i = 0; i < this.purchases.length; ++i)
     {
-      item = this.items[i];
+      item = this.purchases[i];
       total += item.price;
     }
 
