@@ -51,13 +51,6 @@ function printEvent(name, event) {
                 + "\n" + "payload=" + event.ndefMessage[0].payload);
     }
 }
-var head = document.getElementsByTagName('head')[0];
-function InjectScript(src) {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = src;
-    head.appendChild(script);
-}
 /*
  Some nice fluffy clean loggers.
  */
