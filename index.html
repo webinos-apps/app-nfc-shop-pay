@@ -1,0 +1,346 @@
+<html>
+<head>
+<!--<script type="text/javascript" src="webinos.js"></script>-->
+<script type="text/javascript" src="browserDetect.js"></script>
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+<script src="http://192.168.1.123:8080/target/target-script-min.js#anonymous"></script>
+<script type="text/javascript">
+//Local flag that dictates whether the App2App API has already loaded.
+var app2appServiceBound = false;
+var nfcServiceBound     = false;
+var foundServiceBound   = false;
+var app2appService      = null;
+var nfcService          = null;
+var myChannel           = null;
+
+//Local instance of a service that is passed to the bind command.
+var foundService        = null;
+
+//Local instance of a bound service that is passed to the Init.
+var boundService        = null;
+
+//AppLog Prefix: Used for pretty debug output
+var alp                 = "***************\n*(NFC Widget):\n*\n*";
+
+//AppLog Suffix: Used for pretty debug output
+var als                 = "\n***************";
+
+//Set this to true to switch on debugging!
+var debugMode           = true;
+
+//Set this to true to force NFC Module to load in non-NFC environments
+var forceNFCMode        = true;
+
+//Set a local variable to catch NFC events
+var lastReceivedEvent = null;
+
+//CONSTANTS
+var CHANNEL_NAMESPACE       = 'urn:ambiesense:hellonfc';
+var APP_2_APP_API_ADDRESS   = 'http://webinos.org/api/app2app';
+var NFC_API_ADDRESS         = 'http://webinos.org/api/nfc';
+
+//Insert pre-determined calls + callbacks here
+
+function printEvent(name, event) {
+    if (typeof event.ndefMessage[0] !== 'undefined') {
+        appLog(name + ":\n" + "id="
+                + event.ndefMessage[0].id
+                + "\n" + "TNF=" + event.ndefMessage[0].TNF
+                + "\n" + "type=" + event.ndefMessage[0].type
+                + "\n" + "info=" + event.ndefMessage[0].info
+                + "\n" + "payload=" + event.ndefMessage[0].payload);
+    }
+}
+var head = document.getElementsByTagName('head')[0];
+function InjectScript(src) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = src;
+    head.appendChild(script);
+}
+/*
+ Some nice fluffy clean loggers.
+ */
+function appLog(message)
+{
+    if(debugMode)
+    {
+        console.log(alp + message + als);
+    }
+}
+
+function appObjectLog(object)
+{
+    if(debugMode)
+    {
+        console.log(alp);
+        console.dir(object);
+        console.log(als);
+    }
+}
+
+function findAPIService(apiAddress)
+{
+    webinos.discovery.findServices(new ServiceType(apiAddress),
+            {
+                onFound: findAPISuccessCallback,
+                onLost: serviceLost,
+                onError: serviceError
+            }
+    );
+}
+
+function serviceLost(service)
+{
+//    alert("Service lost");
+}
+
+function serviceError(error)
+{
+//    alert(error);
+}
+
+function bindAPIService()
+{
+    //Bind only if service isn't already bound
+    if(foundServiceBound == false)
+    {
+        foundService.bindService({
+            onBind: bindAPISuccessCallback()
+        });
+    }
+    else
+    {
+        appLog("Service already bound.");
+    }
+}
+
+function findAPISuccessCallback(service)
+{
+    foundService = service;
+    appLog(foundService.displayName + " service found: " + foundService.serviceAddress);
+    bindAPIService();
+}
+
+function bindAPISuccessCallback()
+{
+    //set bind flag to true
+    appLog("API successfully bound! Spitting out service...");
+    APIServiceSwitchboard();
+}
+
+function APIServiceSwitchboard()
+{
+    //Hello! Webinos API Switchboard! How may I direct your function call?
+    switch(foundService.api)
+    {
+        case(APP_2_APP_API_ADDRESS):
+            app2appServiceBound = foundServiceBound;
+            foundServiceBound = false;
+            appLog("Initialising App2App API!");
+            app2appService = foundService;
+            appObjectLog(app2appService);
+            foundService = null;
+            initApp2AppAPI2();
+            break;
+
+        case(NFC_API_ADDRESS):
+            nfcServiceBound = foundServiceBound;
+            foundServiceBound = false;
+            appLog("Initialising NFC API!");
+            nfcService = foundService;
+            appObjectLog(nfcService);
+            foundService = null;
+            initNFCAPI2();
+            break;
+    }
+}
+
+function initApp2AppAPI2(){
+    if (app2appService.createChannel === undefined){
+        console.log("app2appService.createChannel undefined");
+        setTimeout(initApp2AppAPI2, 1);
+
+    }  else{
+        console.log("app2appService.createChannel defined");
+        initApp2AppAPI();
+    }
+}
+
+function initNFCAPI2(){
+    if (nfcService.addTextTypeListener === undefined){
+        console.log("nfcService undefined");
+        setTimeout(initNFCAPI2, 1);
+
+    }  else{
+        console.log("nfcService defined");
+        initNFCAPI();
+    }
+}
+//Initialisation of App2AppAPI
+function initApp2AppAPI()
+{
+    var properties = {};
+    properties.mode = 'send-receive';
+    var config = {};
+    config.namespace = CHANNEL_NAMESPACE;
+    config.properties = properties;
+    config.appInfo = {};
+
+    appObjectLog(app2appService);
+
+    app2appService.searchForChannels(CHANNEL_NAMESPACE, [],
+            function(channel)
+            {
+                alert("Found a channel with namespace " + channel.namespace);
+                myChannel = channel;
+            }
+    );
+
+    if(myChannel !== 'undefined' || myChannel == null)
+    {
+        myChannel.connect({ source: "me" },
+                function(message) { alert("Received message: " + message.contents) },
+                function(success) { alert("Successfully connected to channel.") },
+                function(error) { alert("Oops, something went wrong: " + error.message ) });
+    }
+    else
+    {
+        app2appService.createChannel({ namespace: CHANNEL_NAMESPACE, properties: { mode: "send-receive" }, appInfo: {} },
+                function(request) { return confirm("Accept connect request from " + request.requestInfo) },
+                function(message) { alert("Received message: " + message.contents) },
+                function(channel) { alert("Channel creation was successful for namespace " + channel.namespace) },
+                function(error) { alert("Could not create channel: " + error.message) });
+    }
+
+
+
+}
+
+function loadPage(name, event)
+{
+    if(event.ndefMessage[0] !== 'undefined')
+    {
+        var URL = event.ndefMessage[0].info;
+        window.location.href=URL;
+    }
+}
+
+//Initialisation of NFC API
+function initNFCAPI()
+{
+
+    var Listener = function(type, extra, listener)
+    {
+        this.type = type;
+        this.extra = extra;
+        this.listener = listener;
+    }
+
+    var listeners = {};
+    var handle = 0;
+
+    var listener1 = function(event)
+    {
+        //printEvent("listener1", event);
+        loadPage("listener1", event);
+        lastReceivedEvent = event;
+    }
+
+    var scheme = "http";
+    nfcService.addUriTypeListener(scheme, listener1, function()
+    {
+        listeners[++handle] = new Listener("U", scheme, listener1);
+    });
+}
+
+function launchNFCRead()
+{
+    nfcService.launchScanningUI(true);
+}
+
+//Let's get down to business!
+function pageLaunch()
+{
+
+    $('.image').bind('click', function(){
+       alert("Hello");
+       nfcService.launchScanningUI();
+    });
+
+    if(!forceNFCMode)
+    {
+        appLog("Force NFC mode is disabled.");
+        //For some reason Android shows up as 'Linux' in this routine (/confused)
+        if(BrowserDetect.dataOS === 'Linux')
+        {
+            findAPIService(NFC_API_ADDRESS);
+        }
+        else
+        {
+            alert("Didn't detect Android/Linux OS so skipping NFC service discovery!");
+        }
+    }
+    else
+    {
+        appLog("!!Force NFC Mode Enabled!!");
+        findAPIService(NFC_API_ADDRESS);
+    }
+    findAPIService(APP_2_APP_API_ADDRESS);
+}
+var head = document.getElementsByTagName("head")[0];
+function AddScript(src, fnc) {
+
+    var oScript = document.createElement('script');
+    oScript.type = 'text/javascript';
+    oScript.src = src;
+// most browsers
+    oScript.onload = fnc;
+// IE 6 & 7
+    oScript.onreadystatechange = function() {
+        if (this.readyState == 'complete') {
+            fnc();
+        }
+    }
+    head.appendChild(oScript);
+}
+
+function initWebinos()
+{
+    if(window.WebSocket || window.MozWebSocket)
+    {
+        console.log("==============================\nNative websocket found.\n==============================");
+        AddScript("./webinos.js", pageLaunch);
+    }
+    else
+    {
+        if(typeof WebinosSocket == 'undefined')
+        {
+            console.log("==============================\nWebinosSocket is undefined!\n==============================");
+            setTimeout(initWebinos, 1);
+        }
+        else
+        {
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nWebinosSocket is defined!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            AddScript("./webinos.js", pageLaunch);
+        }
+    }
+}
+
+var loadPageCache = window.onload;
+window.onload = function(){
+    if(typeof loadPageCache == "function")
+    {
+        loadPageCache();
+    }
+    initWebinos();
+}
+</script>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body onclick="launchNFCRead();">
+<form>
+    <div class="image" />
+</form>
+</body>
+</html>
