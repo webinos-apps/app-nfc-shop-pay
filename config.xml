@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://developer.webinos.org/nfc-shop-pay" version="0.0.4">  
+ 	<name>Hello NFC!</name>  
+  
+  	<description>A webinos Hello NFC Widget</description>
+    
+  	<author email="richard@ambiesense.com">Richard Logan-Baker</author>
+  	  
+  	<content src="index.html"/>  
+  	<icon src="icon.png"/>
+  	  
+</widget>
